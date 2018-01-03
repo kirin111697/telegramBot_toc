@@ -1,0 +1,16 @@
+certifi==2017.11.5
+cGraph==0.1
+click==6.7
+Flask==0.12.2
+future==0.16.0
+graphviz==0.8.1
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+mercurial==3.9.2
+pygraphviz==1.3.1
+python-telegram-bot==9.0.0
+six==1.11.0
+transitions==0.6.3
+vboxapi==1.0
+Werkzeug==0.13
