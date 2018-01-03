@@ -32,4 +32,6 @@
 ### 使用技術
 - 網頁爬蟲
 - send photo
+- send gif(document)
 - inline keyboard
+- answer callbackquery

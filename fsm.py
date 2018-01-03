@@ -38,7 +38,6 @@ def workIMDB():
 	for item in headerList:
 		worklist.append(item.find('a')['href'])
 		temp = item.find('a')['title']
-		# tempcut = temp[1:]
 		tempcut = temp.split('(')
 		nameList.append(tempcut[0])
 	for item in picHeaderList:

@@ -31,7 +31,7 @@ movie_bot = Engine()
 machine = Machine(model = movie_bot, states = states, transitions = transitions, initial = 'startUp', ignore_invalid_triggers = True, title = 'movie_search')
 
 def _set_webhook():
-	status = bot.set_webhook('https://435325fe.ngrok.io/hook')
+	status = bot.set_webhook('https://b2c42846.ngrok.io/hook')
 	if not status:
 		print('webhook set up failed')
 		sys.exit(1)
@@ -52,7 +52,6 @@ def on_update_recieve(update):
 
 	callback_query = update.callback_query
 	if callback_query:
-		#print(update)
 		id = callback_query.id
 		data = callback_query.data
 		replyid = callback_query.message.chat.id
@@ -77,21 +76,16 @@ def on_update_recieve(update):
 		elif(datacut[0] == 'zh'):
 			movie_bot.CH(replyid,datacut[1])
 			movie_bot.back(replyid)
-			#movie_bot.to_input(replyid)
 		elif(datacut[0] == 'en'):
 			movie_bot.EN(replyid,datacut[1])
 			movie_bot.back(replyid)
-			#movie_bot.to_input(replyid)
 		elif(data == 'recommend'):
 			movie_bot.recommend(replyid)
 		elif(data == 'actor'):
 			movie_bot.people(replyid)
-			#movie_bot.to_recommendCat(replyid)
 		elif(data == 'work'):
 			movie_bot.work(replyid)
-			#movie_bot.to_recommendCat(replyid)
 		elif(datacut[0] == 'yes'):
-			#bot.sendMessage(replyid, datacut[1])
 			datacut[1] = datacut[1].replace(' ', '_')
 			link = 'en.wikipedia.org/wiki/'+datacut[1]
 			movie_bot.yes(replyid, link)
@@ -103,6 +97,7 @@ def on_update_recieve(update):
 		text = update.message.text
 		replyid = update.message.chat.id
 		if(text[0:6] == '/start'):
+			bot.sendDocument(replyid, document = open('/Users/coco/Pictures/marvel/6e00782dgy1fei1sb1tx1g20hl0a2ni3.gif', 'rb'))
 			welcome(update)
 		elif(text[0:8] == '/restart'):
 			movie_bot.restart()
@@ -120,7 +115,6 @@ def message():
 
 if __name__ == '__main__':
 	_set_webhook()
-	#print(movie_bot.states)
 	machine.on_enter_infoPage('intoInfo')
 	machine.on_enter_input('intoInput')
 	machine.on_enter_language('intoLangu')
