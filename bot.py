@@ -31,7 +31,7 @@ movie_bot = Engine()
 machine = Machine(model = movie_bot, states = states, transitions = transitions, initial = 'startUp', ignore_invalid_triggers = True, title = 'movie_search')
 
 def _set_webhook():
-	status = bot.set_webhook('https://453cc9ce.ngrok.io/hook')
+	status = bot.set_webhook('https://435325fe.ngrok.io/hook')
 	if not status:
 		print('webhook set up failed')
 		sys.exit(1)
@@ -102,9 +102,9 @@ def on_update_recieve(update):
 	else:
 		text = update.message.text
 		replyid = update.message.chat.id
-		if(text == '/start'):
+		if(text[0:6] == '/start'):
 			welcome(update)
-		elif(text == '/restart'):
+		elif(text[0:8] == '/restart'):
 			movie_bot.restart()
 			welcome(update)
 		else:
